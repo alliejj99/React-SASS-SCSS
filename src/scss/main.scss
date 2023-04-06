@@ -13,3 +13,35 @@
 @import "./pages/mainPage";
 @import "./pages/searchedVideosPage";
 @import "./pages/videoPage";
+
+// Global Styles
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: $bg-color;
+
+  #root {
+    display: grid;
+    grid-template-columns: auto 1.4fr;
+    grid-template-rows: 55px auto;
+    grid-template-areas:
+      "nav nav"
+      "aside main";
+
+    main {
+      width: 100%;
+      grid-area: main;
+    }
+  }
+}
