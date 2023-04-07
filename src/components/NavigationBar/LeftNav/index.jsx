@@ -1,7 +1,7 @@
 import React from "react";
 import { IoMenu as Menu } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import logo from "../../../assets/logo.svg";
+import logo from "../../../assets/logo.png";
 
 const LeftNav = () => {
   return (
