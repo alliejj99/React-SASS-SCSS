@@ -17,3 +17,13 @@ $ npx eslint --init
 # - latest 설치 -> yes
 # - package manager -> 사용하고 있는거 선택
 ```
+
+
+##### Google Youtube API Key
+  1. 사이트 접속 [https://console.cloud.google.com/](https://console.cloud.google.com/)  
+  2. 상단에서 프로젝트 선택 및 생성  
+  3. 상단의 검색 기능에 “Youtube data api” 검색  
+  4. YouTube Data API v3 - init (or 만들기 클릭)  
+  5. 사용자 인증 정보  
+  6. 사용자 인증 정보 만들기  
+  7. key 발급  
