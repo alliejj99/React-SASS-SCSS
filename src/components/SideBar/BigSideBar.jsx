@@ -118,10 +118,10 @@ const BigSideBar = () => {
           id="sidebar"
           effect="solid"
           place="bottom"
-          backgroundColor="black"
+          backgroundColor="gray"
           delayShow={300}
           arrowColor="transparent"
-          offset={{ top: 0, left: 0 }}
+          // offset={{ top: 0, left: 0 }}
           className="tooltip"
         />
       </div>
