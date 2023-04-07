@@ -4,12 +4,15 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./scss/main.scss";
 import { SearchContextProvider } from "./context/SearchContext";
+import { SideBarContextProvider } from "./context/SideBarContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <SearchContextProvider>
-        <App />
+        <SideBarContextProvider>
+          <App />
+        </SideBarContextProvider>
       </SearchContextProvider>
     </BrowserRouter>
   </React.StrictMode>

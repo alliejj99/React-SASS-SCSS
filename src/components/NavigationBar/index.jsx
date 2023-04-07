@@ -21,7 +21,6 @@ const NavigationBar = () => {
 
       <form>
         <input type="text" name="search" placeholder="Search" />
-
         <button>
           <ImSearch size={20} />
         </button>

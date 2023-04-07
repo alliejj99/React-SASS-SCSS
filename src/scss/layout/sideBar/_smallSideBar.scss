@@ -17,10 +17,8 @@
       }
 
       .sidebar_icon_container {
-        display: flex;
+        @include center;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
 
         &:hover {
           background: none;
