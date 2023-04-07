@@ -1,6 +1,6 @@
 import React from "react";
-import { ImSearch as SearchIcon } from "react-icons/im";
-import { MdKeyboardVoice as VoiceIcon } from "react-icons/md";
+import { ImSearch } from "react-icons/im";
+import { MdKeyboardVoice } from "react-icons/md";
 import useWindowSize from "../../../helpers/useWindowSize";
 
 const SearchBar = () => {
@@ -12,7 +12,7 @@ const SearchBar = () => {
         <form>
           <input type="text" name="search" placeholder="Search" />
           <button type="submit">
-            <SearchIcon
+            <ImSearch
               size={20}
               data-tooltip-content="Search"
               data-tooltip-id="navbar"
@@ -21,7 +21,7 @@ const SearchBar = () => {
         </form>
       ) : (
         <button className="icon-conatiner searchIcon">
-          <SearchIcon
+          <ImSearch
             size={20}
             data-tooltip-content="Search"
             data-tooltip-id="navbar"
@@ -30,7 +30,7 @@ const SearchBar = () => {
       )}
 
       <button className="icon-container voiceIcon">
-        <VoiceIcon
+        <MdKeyboardVoice
           size={25}
           data-tooltip-content="Search with your voice"
           data-tooltip-id="navbar"
