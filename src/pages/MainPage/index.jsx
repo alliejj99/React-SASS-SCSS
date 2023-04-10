@@ -3,22 +3,26 @@ import axios from "../../api/axios";
 import { getVideoInfo } from "../../helpers/fetchingData";
 
 const MainPage = () => {
-  // const [mainVideos, setMainVideos] = useState([]); // 정보를 담아줄 state
+  const stroedVideos = JSON.parse(localStorage.getItem("mainVideos"));
+  const [mainVideos, setMainVideos] = useState(stroedVideos || []); // 정보를 담아줄 state
 
   const getMainVideos = useCallback(async () => {
     try {
-      const res = await axios.get(
-        `/search?part=snippet&maxResults=10&q=beautiful%20place`
-      );
-      let videosArray = await res.data.items;
-      console.log("videosArray 1", videosArray);
+      if (mainVideos.length === 0) {
+        // localStorage에 저장된 데이터가 없을때만 다음을 실행
+        const res = await axios.get(
+          `/search?part=snippet&maxResults=10&q=beautiful%20place`
+        );
+        let videosArray = await res.data.items;
+        videosArray = await getVideoInfo(videosArray);
+        setMainVideos(videosArray);
 
-      videosArray = await getVideoInfo(videosArray);
-      console.log("videosArray 2", videosArray);
+        localStorage.setItem("mainVideos", JSON.stringify(videosArray));
+      }
     } catch (err) {
       console.log(err);
     }
-  }, []);
+  }, [stroedVideos]);
 
   useEffect(() => {
     getMainVideos();
