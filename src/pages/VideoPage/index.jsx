@@ -12,6 +12,7 @@ const VideoPage = () => {
     width: "640",
     height: "390",
     playerVars: {
+      // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
     },
   };
