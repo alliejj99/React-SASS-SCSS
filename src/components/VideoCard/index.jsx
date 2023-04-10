@@ -35,7 +35,7 @@ const VideoCard = ({ id, video, img, info, extraInfo, channelInfo }) => {
                 <div className="channelName">{info.channelTitle}</div>
               </Link>
               <div className="video_metadata">
-                <span>{extraInfo.videoCount} views</span>&nbsp;
+                <span>{extraInfo.viewCount} views</span>&nbsp;
                 <span className="dot_separator"> &#8226; </span>&nbsp;
                 <span>{info.publishedAt}</span>
               </div>

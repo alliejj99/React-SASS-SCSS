@@ -4,6 +4,8 @@
   width: 100%;
   padding: 0 2rem;
   display: grid;
+  // 빈 공간이 274가 있으면 2개 이상으로 출력,
+  //아니면 auto-fill로 하나가 전체 사이즈 먹음
   grid-template-columns: repeat(auto-fill, minmax(274px, 1fr));
   gap: 1rem;
 
