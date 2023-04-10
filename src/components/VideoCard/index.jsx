@@ -10,9 +10,7 @@ import formatTimeVideo from "../../helpers/formatTimeVideo";
 const VideoCard = ({ id, video, img, info, extraInfo, channelInfo }) => {
   dayjs.extend(relativeTime);
   const time = dayjs(info.publishedAt).fromNow(true); // 영상 업로드된 기간
-
   const views = formatView(extraInfo.viewCount); // 조회수
-
   const duration = formatTimeVideo(extraInfo.duration); // 영상 길이/시간
 
   return (
