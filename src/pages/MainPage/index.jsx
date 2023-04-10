@@ -1,9 +1,11 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import axios from "../../api/axios";
 import { getVideoInfo } from "../../helpers/fetchingData";
 import VideoCard from "../../components/VideoCard";
+import { SideBarContext } from "../../context/SideBarContext";
 
 const MainPage = () => {
+  const { setIsToggled } = useContext(SideBarContext);
   const stroedVideos = JSON.parse(localStorage.getItem("mainVideos"));
   const [mainVideos, setMainVideos] = useState(stroedVideos || []); // 정보를 담아줄 state
 
@@ -25,6 +27,11 @@ const MainPage = () => {
       console.log(err);
     }
   }, [stroedVideos]);
+
+  useEffect(() => {
+    // 비디오 페이지 들어가고 다시 메인페이지 돌아오면 사이드바 보이도록
+    setIsToggled(true);
+  }, []);
 
   useEffect(() => {
     getMainVideos();
