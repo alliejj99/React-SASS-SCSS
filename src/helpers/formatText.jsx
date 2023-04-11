@@ -1,16 +1,18 @@
 import React from "react";
 
 const formatText = (text) => {
-  const formattedText = text.split(" ").map((x, i) =>
+  const formattedText = text.split("\n").map((x, i) =>
     x.startsWith("http") ? (
       <a key={i} href={x}>
         {x}
       </a>
     ) : (
-      <span key={i}> {x} </span>
+      <>
+        <span key={i}> {x} </span>
+        <br />
+      </>
     )
   );
-  console.log(text.split(" ").map((x) => x[1].startsWith("http")));
   return formattedText;
 };
 
