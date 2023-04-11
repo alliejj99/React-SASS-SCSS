@@ -4,14 +4,14 @@ import YouTube from "react-youtube";
 import { RiFlagLine, RiShareForwardLine } from "react-icons/ri";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { MdPlaylistAdd } from "react-icons/md";
-// import RelatedVideos from "./RelatedVideos";
 import dayjs from "dayjs";
+// import RelatedVideos from "./RelatedVideos";
 import { SideBarContext } from "../../context/SideBarContext";
 import axios from "../../api/axios";
 import relativeTime from "dayjs/plugin/relativeTime";
-// import formatNumber from '../../helpers/formatNumber'
 import formatViews from "../../helpers/formatViews";
-// import formatText from '../../helpers/formatText'
+import formatText from "../../helpers/formatText";
+import formatNumber from "../../helpers/formatNumber";
 
 dayjs.extend(relativeTime);
 
@@ -42,14 +42,14 @@ const VideoPage = () => {
     e.target.playVideo();
   };
 
-  // const views = formatNumber(currentVideo.extraInfo.viewCount)
-  // const comments = formatNumber(currentVideo.extraInfo.commentCount)
+  const views = formatNumber(currentVideo.extraInfo.viewCount);
+  const comments = formatNumber(currentVideo.extraInfo.commentCount);
 
   const likes = formatViews(currentVideo.extraInfo.likeCount);
   const dislikes = formatViews(currentVideo.extraInfo.dislikeCount);
   const subscribers = formatViews(currentVideo.channelInfo.subscriberCount);
 
-  // const videoDescription = formatText(currentVideo.snippet.description)
+  const videoDescription = formatText(currentVideo.snippet.description);
 
   const videoHeaderMarkUp = (
     <div className="video_main_info">
@@ -62,7 +62,7 @@ const VideoPage = () => {
       </div>
       <h1>{currentVideo.snippet.title}</h1>
       <div className="videoplayer_metadata">
-        <span>{currentVideo.extraInfo.viewCount} views</span>
+        <span>{views} views</span>
         <span className="dot_separator"> &#8226; </span>
         <span>
           {dayjs(currentVideo.snippet.publishedAt).format("MMM D, YYYY")}
@@ -162,14 +162,10 @@ const VideoPage = () => {
                 <button>SUBSCRIBED</button>
               </div>
             </div>
-            <div className="video_description">
-              {currentVideo.snippet.description}
-            </div>
+            <div className="video_description">{videoDescription}</div>
           </div>
           <div className="video_comments_container">
-            <div className="video_comments_count">
-              {currentVideo.extraInfo.commentCount} Comments
-            </div>
+            <div className="video_comments_count">{comments} Comments</div>
             <div className="video_comments">{videoCommentsMarkUp}</div>
           </div>
         </div>
