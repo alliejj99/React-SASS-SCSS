@@ -105,3 +105,4 @@ $ npx eslint --init
 
   export default formatText;
   ```
+  <img width="458" alt="image" src="https://user-images.githubusercontent.com/118407356/231195405-e93d5085-4f25-423d-95d6-a8b435486145.png">
