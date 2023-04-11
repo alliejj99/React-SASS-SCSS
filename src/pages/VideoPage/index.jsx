@@ -5,13 +5,13 @@ import { RiFlagLine, RiShareForwardLine } from "react-icons/ri";
 import { BiLike, BiDislike } from "react-icons/bi";
 import { MdPlaylistAdd } from "react-icons/md";
 import dayjs from "dayjs";
-// import RelatedVideos from "./RelatedVideos";
+import relativeTime from "dayjs/plugin/relativeTime";
 import { SideBarContext } from "../../context/SideBarContext";
 import axios from "../../api/axios";
-import relativeTime from "dayjs/plugin/relativeTime";
 import formatViews from "../../helpers/formatViews";
 import formatText from "../../helpers/formatText";
 import formatNumber from "../../helpers/formatNumber";
+import RelatedVideos from "./RelatedVideos";
 
 dayjs.extend(relativeTime);
 
@@ -23,6 +23,7 @@ const VideoPage = () => {
   const [videoComments, setVideoComments] = useState([]);
 
   const loadComments = useCallback(async () => {
+    // 댓글 불러오기
     setIsToggled(false);
     const response = await axios.get(
       `/commentThreads?part=snippet&videoId=${videoId}`
@@ -170,7 +171,7 @@ const VideoPage = () => {
           </div>
         </div>
         <div className="column column_2">
-          {/* <RelatedVideos currentVideo={videoId} /> */}
+          <RelatedVideos currentVideo={videoId} />
         </div>
       </div>
     </section>
