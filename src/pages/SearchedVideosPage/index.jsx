@@ -31,7 +31,7 @@ const SearchedVideosPage = () => {
     loadVideos();
   }, [loadVideos]);
 
-  return <section>{searchedVideoMarkup}</section>;
+  return <section className="searchedVideos">{searchedVideoMarkup}</section>;
 };
 
 export default SearchedVideosPage;
