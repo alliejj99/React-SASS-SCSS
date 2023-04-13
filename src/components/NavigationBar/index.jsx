@@ -7,11 +7,42 @@ import SearchBar from "./SearchBar";
 import RightNav from "./RightNav";
 import useWindowSize from "../../helpers/useWindowSize";
 import { SearchContext } from "../../context/SearchContext";
+import { useNavigate } from "react-router-dom";
+import axios from "../../../api/axios";
 
 const NavigationBar = () => {
   const { width } = useWindowSize(); // windowSize 안의 width
-  const { showSpecialSearchBar, setShowSpecialSearchBar } =
-    useContext(SearchContext);
+  const {
+    showSpecialSearchBar,
+    setShowSpecialSearchBar,
+    searchQuery,
+    setSearchQuery,
+  } = useContext(SearchContext);
+
+  let navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setSearchQuery({
+      ...searchQuery,
+      input: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (searchQuery.input !== "") {
+      const response = await axios.get(
+        `/search?part=snippet&maxResults=10&q=${searchQuery.input}`
+      );
+
+      setSearchQuery({
+        ...searchQuery,
+        videos: response.data.items,
+      });
+
+      navigate(`/results/${searchQuery.input}`);
+    }
+  };
 
   const spacialSearchBarRender = (
     <div className="special_searchbar">
@@ -19,8 +50,14 @@ const NavigationBar = () => {
         <BiArrowBack size={25} />
       </button>
 
-      <form>
-        <input type="text" name="search" placeholder="Search" />
+      <form onSubmit={handleSubmit}>
+        <input
+          onChange={handleChange}
+          value={searchQuery.input}
+          type="text"
+          name="search"
+          placeholder="Search"
+        />
         <button>
           <ImSearch size={20} />
         </button>
@@ -38,7 +75,7 @@ const NavigationBar = () => {
       ) : (
         <React.Fragment>
           <LeftNav />
-          <SearchBar />
+          <SearchBar onChange={handleChange} onSubmit={handleSubmit} />
           <RightNav />
         </React.Fragment>
       )}
