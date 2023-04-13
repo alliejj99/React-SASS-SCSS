@@ -8,7 +8,7 @@ import RightNav from "./RightNav";
 import useWindowSize from "../../helpers/useWindowSize";
 import { SearchContext } from "../../context/SearchContext";
 import { useNavigate } from "react-router-dom";
-import axios from "../../../api/axios";
+import axios from "../../api/axios";
 
 const NavigationBar = () => {
   const { width } = useWindowSize(); // windowSize 안의 width
